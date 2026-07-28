@@ -1,16 +1,70 @@
-# React + Vite
+﻿# FullStackNotes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FullStackNotes is the frontend app for the MERN-NOTES project. It is built with React and Vite and connects to a backend API for note management.
 
-Currently, two official plugins are available:
+## Project structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `src/`
+  - `App.jsx` — main application component
+  - `main.jsx` — React entry point and router setup
+  - `index.css` — global CSS styles
+- `public/` — static assets
+- `package.json` — frontend dependencies and scripts
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React + Vite frontend
+- Browser routing support via `react-router-dom`
+- Connects to backend API for notes
+- Fast local development with HMR
 
-## Expanding the ESLint configuration
+## Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Install dependencies
+
+```powershell
+cd frontend\FullStackNotes
+npm install
+```
+
+2. Start the frontend
+
+```powershell
+npm run dev
+```
+
+3. Open the local URL shown by Vite (usually `http://localhost:5173`)
+
+## Backend
+
+The backend lives in `../backend` and uses Express, Mongoose, and Upstash Redis for rate limiting.
+
+To run the backend:
+
+```powershell
+cd ..\backend
+npm install
+npm run dev
+```
+
+## Important notes
+
+- Keep secret values out of Git by adding `.env` to `.gitignore`
+- If you already committed a secret file, remove it from Git tracking with:
+
+```powershell
+git rm --cached .env
+```
+
+- Make sure the frontend and backend are running in separate terminals while developing.
+
+## Useful commands
+
+- `npm run dev` — start the Vite dev server
+- `npm run build` — create a production build
+- `npm run preview` — preview the production build locally
+
+## Troubleshooting
+
+- If you see React hook errors, ensure `react` and `react-dom` versions match and that `BrowserRouter` is imported from `react-router-dom`.
+- If the app fails to connect to the backend, confirm the backend server is running and the API URL is correct.
