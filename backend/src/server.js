@@ -18,13 +18,13 @@ const __dirname = path.resolve(); // Get the current directory name
 
 // Middleware: is a function that has access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named next.
 
-if (process.env.NODE_ENV !== "production") {
-  app.use(
-    cors({
-      origin: ["http://localhost:5173", "https://your-project.vercel.app"],
-    }),
-  );
-}
+app.use(
+  cors({
+    origin: process.env.NODE_ENV === "production"
+      ? "https://think-board-blush.vercel.app"
+      : "http://localhost:5173",
+  })
+);
 
 // middleware to parse JSON bodies eg: req.body
 app.use(express.json());
