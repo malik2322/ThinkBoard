@@ -18,14 +18,35 @@ const PORT = process.env.PORT || 5001;
 
 // Middleware: is a function that has access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named next.
 
+// app.use(
+//   cors({
+//     origin: process.env.NODE_ENV === "production"
+//       ? "https://think-board-blush.vercel.app" || "https://think-board-git-main-code-warriors3.vercel.app"
+//       : "http://localhost:5173",
+//   })
+// );
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://think-board-blush.vercel.app",
+  "https://think-board-git-main-code-warriors3.vercel.app",
+  "https://think-board-kzbzvkng3-code-warriors3.vercel.app",
+];
+
 app.use(
   cors({
-    origin: process.env.NODE_ENV === "production"
-      ? "https://think-board-blush.vercel.app"
-      : "http://localhost:5173",
+    origin(origin, callback) {
+      // Allow requests with no Origin header (e.g. Postman)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
   })
 );
-
 
 
 // middleware to parse JSON bodies eg: req.body
