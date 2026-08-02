@@ -1,5 +1,8 @@
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001/api" : "https://your-production-api-url.com/api";
+import dotenv from "dotenv";
+dotenv.config();
+
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001/api" : `${import.meta.env.VITE_API_URL}`;
 import axios from "axios";
 
 const api = axios.create({
