@@ -26,8 +26,6 @@ app.use(
   })
 );
 
-console.log(process.env.NODE_ENV);
-console.log(process.env.VITE_API_URL);
 
 
 // middleware to parse JSON bodies eg: req.body
