@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import path from "path";
+// import path from "path";
 
 import notesRoutes from "./routes/notesRoutes.js";
 import { connectDB } from "./config/db.js";
@@ -14,7 +14,7 @@ dotenv.config();
 // const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5001;
-const __dirname = path.resolve(); // Get the current directory name
+// const __dirname = path.resolve(); // Get the current directory name
 
 // Middleware: is a function that has access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named next.
 
@@ -25,6 +25,10 @@ app.use(
       : "http://localhost:5173",
   })
 );
+
+console.log(process.env.NODE_ENV);
+console.log(process.env.VITE_API_URL);
+
 
 // middleware to parse JSON bodies eg: req.body
 app.use(express.json());
