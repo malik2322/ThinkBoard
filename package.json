@@ -1,0 +1,22 @@
+{
+  "name": "mern-notes",
+  "version": "1.0.0",
+  "description": "FullStackNotes is the frontend app for the MERN-NOTES project. It is built with React and Vite and connects to a backend API for note management.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malik2322/ThinkBoard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/malik2322/ThinkBoard/issues"
+  },
+  "homepage": "https://github.com/malik2322/ThinkBoard#readme"
+}
