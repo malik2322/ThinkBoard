@@ -41,13 +41,21 @@ app.use("/api/notes", notesRoutes);
 
 // app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+//   });
+// }
+
+app.get("/", (req, res) => {
+  res.json({
+    message: "ThoughtForge API is running 🚀"
   });
-}
+});
+
+
 // what is endpoint? endpoint is the combination of the route(URL) and the method(HTTP method). That let the client identify a specific resource. For example, GET /api/notes is an endpoint. POST /api/notes is another endpoint.
 connectDB().then(() => {
   app.listen(PORT, () => {
