@@ -21,8 +21,7 @@ const __dirname = path.resolve(); // Get the current directory name
 if (process.env.NODE_ENV !== "production") {
   app.use(
     cors({
-      origin: "http://localhost:5173",
-      // credentials: true
+      origin: ["http://localhost:5173", "https://your-project.vercel.app"],
     }),
   );
 }
@@ -51,10 +50,9 @@ app.use("/api/notes", notesRoutes);
 
 app.get("/", (req, res) => {
   res.json({
-    message: "ThoughtForge API is running 🚀"
+    message: "ThoughtForge API is running 🚀",
   });
 });
-
 
 // what is endpoint? endpoint is the combination of the route(URL) and the method(HTTP method). That let the client identify a specific resource. For example, GET /api/notes is an endpoint. POST /api/notes is another endpoint.
 connectDB().then(() => {
